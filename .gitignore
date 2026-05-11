@@ -1,0 +1,25 @@
+# Personal data — never commit
+personal/candidate.md
+
+# Generated outputs — never commit
+outputs/**
+!outputs/
+!outputs/.gitkeep
+
+# Generated tailored scripts — keep template, exclude personal builds
+scripts/resume_*_v*.js
+!scripts/resume_base_template.js
+
+# Build artifacts
+_tmp_*
+_inject_*.py
+_tb_*.xml
+_sb_unpack*/
+
+# Python
+*.pyc
+__pycache__/
+
+# Node
+node_modules/
+package-lock.json

@@ -1,0 +1,12 @@
+{
+  "name": "claude-resume-engine",
+  "version": "1.0.0",
+  "description": "AI-powered resume generation framework using Claude Code",
+  "scripts": {
+    "build": "node scripts/resume_base_template.js",
+    "validate": "python3 scripts/office/validate.py"
+  },
+  "dependencies": {
+    "docx": "^9.5.3"
+  }
+}
