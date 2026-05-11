@@ -2,7 +2,7 @@
 
 A resume generation framework built on Claude Code. Produces ATS-clean, format-locked `.docx` resumes tailored to specific job descriptions — with a 6-second scan scoring system that measures whether your resume passes the hiring manager's first look.
 
-Built by a Senior TPM who got tired of reformatting the same resume 40 times.
+Built by someone who got tired of reformatting the same resume 40 times.
 
 ---
 

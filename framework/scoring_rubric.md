@@ -65,7 +65,7 @@ Score every cell on 4 dimensions:
 | Dimension | Scale | Notes |
 |---|---|---|
 | ATS viability | /10 | Will ATS find this keyword? |
-| Recruiter value | /10 | Does a TPM screener recognize this? |
+| Recruiter value | /10 | Does a non-specialist screener recognize this? |
 | Meaningfulness | /10 | Is this specific and defensible? |
 | AI smell | /10 | Lower = more human. Flag if over 7. |
 

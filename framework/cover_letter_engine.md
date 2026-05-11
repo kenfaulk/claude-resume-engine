@@ -158,7 +158,7 @@ Create the bridge between:
 
 #### Example logic
 - Role needs software + systems + operations alignment
-- Candidate repeatedly led technical programs + built execution frameworks + worked in semiconductor environments
+- Candidate repeatedly led technical programs + built execution frameworks + operated in complex multi-stakeholder environments
 - Bridge: candidate connects technical complexity to scalable operational delivery
 
 #### Output

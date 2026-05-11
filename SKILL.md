@@ -51,7 +51,7 @@ resume-generator/
 │   └── scoring_rubric.md            ← Stress test scoring methodology
 ├── scripts/
 │   ├── resume_base_v9.js             ← Base resume build script (single column)
-│   ├── resume_defense_v9.js          ← Defense PM variant (build on demand)
+│   ├── resume_[Audience]_v1.js       ← Audience-specific variants (build on demand)
 │   └── office/                       ← Validation and docx utilities
 ├── outputs/
 │   └── [Company]/[Role]/             ← All outputs organized by company and role
@@ -112,13 +112,13 @@ Steps:
    - Fill remaining slots with highest-priority items from pool
    - Never exceed 20 items total in the competency block
    - Always maintain the three-category structure (Program Mgmt, Operations, Leadership)
-   - For TPM+Semiconductor pool: use four categories (add Silicon Debug & Technical Depth)
+   - For specialized pools: add a fourth category only with explicit user approval
 
 7. Run PHASE 3 — Proposed Changes (show as diff, do not build yet):
    - Tagline: swap Role Title and Focus Area only. Keep $122M. Keep structure exactly.
    - Summary S1: reframe context to JD domain. Never change S2.
    - Competency block: populated from pool based on Phase 2 audit
-   - Tech line: base / defense / semiconductor / TPM+semiconductor version per audience
+   - Tech line: select the appropriate version from candidate.md per audience
    - Bullet ORDER within each job block — reorder by JD relevance, never rewrite, never drop
    - Context lines: reframe language to JD audience, never change underlying facts
 
@@ -147,7 +147,7 @@ Hard rules for /tailor:
 
 ### /build-archetype [Company] [Role] [Pool]
 Build a resume without a JD using a pre-defined audience pool.
-Pool options: base | defense | semiconductor | tpm-semiconductor
+Pool options: use the audience pool names as defined in candidate.md Competency Tables section
 
 Steps:
 1. Read personal/candidate.md
@@ -380,8 +380,8 @@ Every bullet scored on:
 | Believability | /10 | Would a hiring manager trust this? |
 | AI Generated % | % | Lower is better. Target under 15% |
 | Business Value | /10 | Revenue, cost, time, or risk? |
-| Keyword Value | /10 | TPM-relevant keywords present? |
-| Recruiter Comprehension | /10 | Clear to non-semiconductor audience? |
+| Keyword Value | /10 | Role-relevant keywords present? |
+| Recruiter Comprehension | /10 | Clear to a non-specialist recruiter? |
 
 Target overall score: 9.0+
 Block average below 8.5 requires rewrite before locking.
