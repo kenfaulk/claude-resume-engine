@@ -14,8 +14,8 @@ Score every bullet on 7 dimensions:
 | Believability | /10 | Would a hiring manager trust this? |
 | AI Generated % | % | Lower is better. Target under 15% |
 | Business Value | /10 | Revenue, cost, time, or risk impact? |
-| Keyword Value | /10 | TPM-relevant keywords present? |
-| Recruiter Comprehension | /10 | Clear to non-semiconductor audience? |
+| Keyword Value | /10 | Role-relevant keywords present? |
+| Recruiter Comprehension | /10 | Clear to a non-specialist recruiter? |
 
 **Target overall score per bullet: 9.0+**
 **Block average below 8.5 requires rewrite before locking.**
@@ -42,17 +42,19 @@ After scoring individual bullets, score the full block:
 |---|---|
 | Summary | Message clarity, metric inclusion, 8-second read |
 | Competency table | ATS viability, recruiter value, AI smell, meaningfulness |
-| SiClarity block | Credibility, jargon level, audience comprehension |
-| Intel TPM block | Metric density, believability, keyword coverage |
-| Ops Manager block | Budget, people, process signals |
-| Sr Product Engineer | Business impact, outcome clarity |
-| SW Eng Manager | Relevance for age of role |
+| Most recent role block | Metric density, believability, keyword coverage |
+| Prior role blocks | Business impact, outcome clarity, continued relevance |
+| Oldest role block | Relevance for age of role — drop if over 20 years and adds nothing |
 | Education | Credential completeness, gap risk |
-| Patents/Publications | Signal value vs clutter |
+| Patents/Publications | Signal value vs clutter — remove section if not applicable |
 | Leadership | Audience recognition of memberships |
 
 **Target overall resume score: 9.0+**
-**Realistic ceiling without degree: 9.1**
+
+Example (Fred Flintstone):
+- Bedrock Construction block: throughput metrics, safety record, CB1220 expertise
+- Slate Rock block: uptime, efficiency improvement, certification
+- Pebble Industries block: progression pace, delivery contribution
 
 ---
 

@@ -28,14 +28,12 @@ Everything you need is in these two files.
 2. Never use first person (no "I") in resume bullets
 3. Never bold metric prefix format (e.g. "40% improvement --") — AI smell trigger
 4. Never exceed 2 sentences in summary
-5. Never add "Omnichannel" — removed intentionally, not defensible
-6. Never use "Proven" for SiClarity content — use "Owned" or "Record of architecting"
-7. Never use x symbol for multiplication — always use plain x
-8. Never change any locked metric
-9. Always keep $122M in both tagline and summary
-10. Context lines are always italic prose, never bullets
-11. Two sentence bullets acceptable when each sentence owns a distinct idea
-12. Always run validation after every build: python3 scripts/office/validate.py outputs/[file].docx
+5. Never use x symbol for multiplication — always use plain x
+6. Never change any locked metric from candidate.md
+7. Always keep the candidate's top locked metric in both tagline and summary
+8. Context lines are always italic prose, never bullets
+9. Two sentence bullets acceptable when each sentence owns a distinct idea
+10. Always run validation after every build: python3 scripts/office/validate.py outputs/[file].docx
 
 ---
 
@@ -80,11 +78,9 @@ Steps:
 1. Read personal/candidate.md — source of truth, nothing changes without approval
 2. Read framework/resume_format_v9.md — follow format exactly
 3. Determine audience pool before touching anything:
-   - Base / Broad TPM: use Base / Broad Audience Table
-   - Defense: use Defense Table
-   - Semiconductor (KLA, Lam, AMAT, Synopsys, Micron, foundry): use Semiconductor Competency Pool
-   - TPM + Semiconductor hybrid (Tesla Terafab, NPI + Debug roles): use TPM + Semiconductor Combined Pool
-   - When no JD exists: ask user which pool to start from before proceeding
+   - Read candidate.md Competency Tables section — pools are defined there by audience name
+   - Match JD domain to the appropriate pool (e.g., Base/Broad, Industry-Specific, Executive, etc.)
+   - When no JD exists: ask user which audience pool to start from before proceeding
 4. Check outputs/[Company]/[Role]/JD.md — use if exists, otherwise ask user to paste JD
    Save pasted JD to outputs/[Company]/[Role]/JD.md for future use
    If no JD exists, proceed with archetype build using selected pool
@@ -186,7 +182,7 @@ Sections: use the abbreviated job block name you defined in your build script
 Example: /update-bullet role1 3  (where role1 is the abbreviated name of your most recent role)
 
 ### /update-summary
-Rewrite the summary for a specific audience or JD. Always keeps $122M and 100% on-time delivery in sentence 2.
+Rewrite the summary for a specific audience or JD. Always keeps the candidate's locked metrics line (sentence 2) exactly as defined in candidate.md.
 
 ### /gap-analysis
 Run JD gap analysis against candidate profile.
@@ -321,7 +317,7 @@ Steps:
 
 Hard rules:
 - Never rehash the resume — interpret, don't list
-- Add information NOT in the resume that I have in my candidate.md
+- Add information NOT in the resume that exists in candidate.md
 - Lead with relevance, not enthusiasm
 - Not to exceed 2200 characters in length
 - No "I am passionate about" or equivalent

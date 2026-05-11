@@ -31,7 +31,7 @@ Open `personal/candidate.md` and fill it in section by section. The template has
 
 **Experience blocks** — your bullets, written once. The framework reorders them for each JD. It never rewrites them without your approval. Write them in either narrative or XYZ (outcome-first) format — the `/stress-test` command will tell you which performs better.
 
-**Competency tables** — the pools of skills you pull from for each audience (broad, defense, semiconductor, etc.). These populate the resume sidebar. You define the pools; the `/tailor` command selects from them based on the JD.
+**Competency tables** — the pools of skills you pull from for each audience (broad, industry-specific, executive, etc.). These populate the resume sidebar. You define the pools; the `/tailor` command selects from them based on the JD.
 
 ---
 

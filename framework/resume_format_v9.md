@@ -1,20 +1,20 @@
-# Ken Faulk — Resume Format Specification
+# Resume Format Specification
 ## Version: v9 (locked final)
-## Last Updated: April 2026
+## Example candidate: Fred Flintstone — Heavy Equipment Operator, Quarryland CA
 
-This file defines the exact format, fonts, layout, spacing, and code patterns for Ken's resume.
+This file defines the exact format, fonts, layout, spacing, and code patterns for a resume built with this framework.
 Load this file at the start of any resume session. Follow it exactly.
-The working script is `resume_base_v9.js`. To regenerate: `node scripts/resume_base_v9.js`
+Replace the example content in the Locked Experience Content section with your own candidate data from candidate.md.
 
 ---
 
 ## Quick Start — What To Do When Loaded
 
 1. Read this entire file before writing any code
-2. Use `resume_base_v9.js` as the base script — do not start from scratch
+2. Use `scripts/resume_base_template.js` as the starting point
 3. Only change **content** (bullets, summary, competencies) to match a new JD
-4. Never change **format, fonts, spacing, or layout** without Ken's explicit approval
-5. Output file: always copy to `/mnt/user-data/outputs/`
+4. Never change **format, fonts, spacing, or layout** without explicit user approval
+5. Output file: always write to `outputs/`
 
 ---
 
@@ -22,10 +22,10 @@ The working script is `resume_base_v9.js`. To regenerate: `node scripts/resume_b
 
 | Property | Value |
 |---|---|
-| Working script | `resume_base_v9.js` |
-| npm dependency | `docx@9.5.3` (already installed globally) |
-| Build command | `node scripts/resume_base_v9.js` |
-| Output filename | `Ken_Faulk_[Company]_[Role]_v[n].docx` |
+| Working script | `scripts/resume_base_template.js` (copy and fill in) |
+| npm dependency | `docx@9.5.3` |
+| Build command | `node scripts/resume_[Candidate]_Base_v1.js` |
+| Output filename | `[CandidateName]_[Company]_[Role]_v[n].docx` |
 
 ---
 
@@ -70,7 +70,7 @@ The working script is `resume_base_v9.js`. To regenerate: `node scripts/resume_b
 |---|---|---|
 | Dark Blue | #1F4E79 | Name only |
 | Mid Blue | #2E75B6 | Section headers, job titles, tagline, table header bg, tech label |
-| Dark | #1A1A1A | Body text, company names, bullet metric prefix |
+| Dark | #1A1A1A | Body text, company names, bullet text |
 | Mid Gray | #555555 | Locations, context lines, technology items, education sub-items |
 | Date Gray | #888888 | Date text only |
 | White | #FFFFFF | Page background, competency header text |
@@ -86,7 +86,7 @@ The working script is `resume_base_v9.js`. To regenerate: `node scripts/resume_b
 5. CORE COMPETENCIES (section header + categorized list + technology line)
 6. PROFESSIONAL EXPERIENCE (section header + jobs reverse chronological)
 7. EDUCATION
-8. PATENTS & PUBLICATIONS
+8. PATENTS & PUBLICATIONS (remove if not applicable)
 9. LEADERSHIP, DEVELOPMENT & MEMBERSHIPS (combined single section)
 
 ---
@@ -113,7 +113,7 @@ function sectionHeader(text) {
 new Paragraph({
   alignment: AlignmentType.CENTER,
   spacing: { before: 0, after: 16 },
-  children: [new TextRun({ text: "KENNETH FAULK", font: "Calibri", size: 40,
+  children: [new TextRun({ text: "FRED FLINTSTONE", font: "Calibri", size: 40,
     bold: true, color: "1F4E79" })]
 })
 
@@ -122,21 +122,21 @@ new Paragraph({
   alignment: AlignmentType.CENTER,
   spacing: { before: 0, after: 16 },
   children: [
-    new TextRun({ text: "916-836-7757", font: "Calibri", size: 21, color: "555555" }),
+    new TextRun({ text: "555-BEDROCK", font: "Calibri", size: 21, color: "555555" }),
     new TextRun({ text: "   •   ", font: "Calibri", size: 21, color: "555555" }),
-    new TextRun({ text: "kfaulk1@gmail.com", font: "Calibri", size: 21, color: "2E75B6" }),
+    new TextRun({ text: "fred@bedrock.com", font: "Calibri", size: 21, color: "2E75B6" }),
     new TextRun({ text: "   •   ", font: "Calibri", size: 21, color: "555555" }),
-    new TextRun({ text: "linkedin.com/in/ken-faulk/", font: "Calibri", size: 21, color: "2E75B6" }),
+    new TextRun({ text: "linkedin.com/in/fred-flintstone/", font: "Calibri", size: 21, color: "2E75B6" }),
   ]
 })
 
-// Tagline — CENTER ALIGNED — update role/focus per JD, always keep $122M Business Impact
+// Tagline — CENTER ALIGNED — update role/focus per JD, always keep top impact metric
 new Paragraph({
   alignment: AlignmentType.CENTER,
   spacing: { before: 0, after: 80 },
   border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: "2E75B6", space: 2 } },
   children: [new TextRun({
-    text: "Sr. Technical Program Manager  |  Global Manufacturing & Technology Operations  |  $122M Business Impact",
+    text: "Lead Boulder Tech  |  Aggregate Production & Crushing Operations  |  50,000 Tons Delivered",
     font: "Calibri", size: 24, bold: true, color: "2E75B6" })]
 })
 ```
@@ -146,21 +146,22 @@ new Paragraph({
 ## Summary Rules
 
 - **2 sentences maximum** — target 8-second read time
-- **Must always include:** $122M business impact, 100% on-time delivery, 25+ years
+- **Must always include** the candidate's top locked metric, on-time delivery record, and years of experience
 - **CENTER ALIGNED** — matches name, contact, tagline
 - No section header label — flows directly under tagline
 - Spacing: before 80, after 80
 - Tailor sentence 1 to JD context; sentence 2 metrics are fixed and never change
 
-**Locked base text:**
-> "Senior Technical Program Manager with 25+ years driving complex multi-workstream programs from concept through delivery across global manufacturing and technology operations. $122M documented business impact, 100% on-time delivery, across 5 global sites and 9 product launches."
+**Example locked base text (Fred Flintstone):**
+> "Veteran Heavy Equipment Operator with 15 years delivering precision rock crushing and aggregate production across Quarryland's largest infrastructure projects. 50,000 tons delivered, 100% on-time across 12 projects and 3 quarry sites."
+
+Replace with your candidate's actual locked metrics from candidate.md.
 
 ---
 
 ## Core Competencies — Categorized Format (v9)
 
-**The inline dot-separated keyword line is retired.** Replaced with bold category headings and one item per line.
-No dots. No color block. No table. Clean hierarchy. ATS safe. Every skill has first-position eye contact.
+Clean hierarchy. ATS safe. Every skill has first-position eye contact.
 
 ### Structure
 - Three named categories, each with a bold mid-blue heading
@@ -171,80 +172,66 @@ No dots. No color block. No table. Clean hierarchy. ATS safe. Every skill has fi
 - Followed immediately by Technology & Methods line
 - Spacing: before 40 on first category, before 100 between categories, after 20 per item
 
-### Rendering function
+### Example (Fred Flintstone — Base/Broad audience)
+
 ```javascript
 const BASE_COMPETENCIES = [
   {
-    heading: "Program Management & Governance",
+    heading: "Equipment & Operations",
     items: [
-      "PMO Governance & Scaling",
-      "Full-Lifecycle Program Management",
-      "Schedule & Milestone Tracking",
-      "Risk Register & Dependency Management",
-      "Lab & Production Readiness",
-      "Change Control Management",
-      "Program Risk & Issue Resolution",
+      "John Deere CB1220 Operation",
+      "Multi-Ton Load Management",
+      "Quarry Site Coordination",
+      "Equipment Maintenance & Inspection",
+      "Safety Protocol Compliance",
+      "Blast Pattern Coordination",
     ]
   },
   {
-    heading: "Operations & Continuous Improvement",
+    heading: "Production & Delivery",
     items: [
-      "Lean Six Sigma Black Belt (LSS BB)",
-      "Yield & Process Optimization",
-      "Kaizen / Continuous Improvement",
-      "CapEx Planning & Management",
-      "Budget Forecasting & Variance",
-      "Cost Reduction & CapEx Control",
+      "Aggregate Sizing & Grading",
+      "Volume Throughput Optimization",
+      "Material Delivery Scheduling",
+      "Quality Control & Inspection",
+      "Waste Reduction & Recovery",
     ]
   },
   {
-    heading: "Leadership & Stakeholder Management",
+    heading: "Team & Project Leadership",
     items: [
-      "Team Development & Mentorship",
-      "VP & Executive Reporting",
-      "Vendor SOW Management",
-      "Executive Stakeholder Management",
+      "Crew Supervision (8 Technicians)",
+      "Contractor Coordination",
+      "Client Milestone Reporting",
+      "Site Safety Leadership",
+      "Training & Certification Programs",
     ]
   },
 ];
-
-function competencyCategoryBlock(categories) {
-  const paragraphs = [];
-  categories.forEach((cat, catIdx) => {
-    paragraphs.push(new Paragraph({
-      spacing: { before: catIdx === 0 ? 40 : 100, after: 30 },
-      children: [run(cat.heading, { size: 19, bold: true, color: C.midBlue })]
-    }));
-    cat.items.forEach(item => {
-      paragraphs.push(new Paragraph({
-        spacing: { before: 0, after: 20 },
-        children: [run(item, { size: 19, color: C.dark })]
-      }));
-    });
-  });
-  return paragraphs;
-}
 ```
+
+Replace with your candidate's competency pools from candidate.md.
 
 ### Tailoring rules for /tailor runs
 - Swap items within categories to match JD keywords — never reorder categories
 - Add a fourth category only with explicit user approval
-- "Lean Six Sigma Black Belt (LSS BB)" is the full-text form — never abbreviate to "LSS BB" alone
 - Skills already covered in bullets with proof: keep in competency block (double ATS hit)
 - Skills orphaned (no bullet coverage): ask user before adding
 - Never add terms not defensible in an interview
-- Never add "Omnichannel" — removed intentionally
+- Never exceed 20 items total across all categories
 
-### Technology line — THREE VERSIONS (swap per target audience)
+### Technology line — versions (swap per target audience)
 
-**Base — broad audience (Tesla, GD, Motorola, ops/TPM roles):**
-MS Project  ·  JIRA / Confluence  ·  PowerBI / Looker / ELM  ·  Agile / Scrum  ·  DOE / SPC  ·  Lean Six Sigma
+Replace these with your candidate's technology lines from candidate.md.
 
-**Defense:**
-MS Project  ·  JIRA / Confluence  ·  PowerBI / Looker / ELM  ·  Agile / Scrum  ·  DOE / SPC  ·  Lean Six Sigma  ·  NDA & IP Compliance Governance  ·  Vendor SOW Management
+**Base — broad audience:**
+John Deere CB1220  ·  CAT 390F  ·  Blast Pattern Design  ·  Load & Haul Optimization  ·  MSHA Safety Standards  ·  Lean Production
 
-**Semiconductor — (KLA, Lam Research, AMAT, Synopsys, Micron):**
-MS Project  ·  JIRA / Confluence  ·  PowerBI / Looker / ELM  ·  Agile / Scrum  ·  DOE / SPC  ·  Lean Six Sigma  ·  Foundry Partnerships (TSMC / Samsung / Intel)  ·  GAA / CFET / FinFET  ·  HBM / TSV Integration  ·  3DIC / Heterogeneous Integration
+**Infrastructure / Municipal:**
+John Deere CB1220  ·  CAT 390F  ·  Blast Pattern Design  ·  Load & Haul Optimization  ·  MSHA Safety Standards  ·  Lean Production  ·  DOT Compliance  ·  Project Closeout Documentation
+
+**Mining / Extraction:**
+John Deere CB1220  ·  CAT 390F  ·  Blast Pattern Design  ·  Load & Haul Optimization  ·  MSHA Safety Standards  ·  Lean Production  ·  Overburden Removal  ·  Seam Identification  ·  Royalty & Volume Reporting
 
 ---
 
@@ -276,7 +263,7 @@ function jobBlock(company, location, title, dates) {
 ## Context Lines
 
 - 1-2 sentences describing role scope — always italic prose, never a bullet
-- Calibri 10.5pt italic #1A1A1A
+- Calibri 10.5pt italic #555555
 - Spacing: before 0, after 40
 - Reframe language per JD without changing the underlying facts
 
@@ -300,8 +287,7 @@ function jobBlock(company, location, title, dates) {
 
 - Spacing: **before 20, after 20**
 - Calibri 10.5pt (21hp)
-- **Format: METRIC — narrative** (everything before em dash is bold, after is regular)
-- Always lead with number or outcome — never start with a verb
+- Always lead with number or outcome — never start with "Responsible for"
 - Use `x` not `×` for ATS compatibility
 
 ---
@@ -326,75 +312,49 @@ function jobBlock(company, location, title, dates) {
 
 ---
 
-## Locked Experience Content
+## Locked Experience Content — EXAMPLE (Fred Flintstone)
 
-### SiClarity Inc | Director, AI Product Development | 2024–2025
-Context: Owned cross-functional product development for an AI-powered process development and analysis platform targeting $20M revenue.
+Replace everything below this line with your candidate's actual experience from candidate.md.
+These are illustrative examples showing the format, not real content.
 
-Bullets (all 4 locked):
-1. Analyzed tier-1 customer requirements and competitive landscape to define AI platform vision in a $2.14B market, delivering 4x faster process insights and positioning product for enterprise adoption.
-2. Architected AI-driven analysis platform that accelerated simulation-to-silicon validation by 95%, reducing process development cycle time for next-generation chip architecture through hardware/software integration and agile delivery.
-3. Translated complex AI and engineering software development progress into business impact assessments enabling strategic decisions on $20M product roadmap through monthly board presentations.
-4. Owned product requirements, business model, and roadmap using agile delivery methodology, running biweekly stakeholder reviews across AI, engineering, and executive teams.
+---
 
-### Intel Corporation | Technical Program Lead – Product Engineering | 2014–2024
-Context: Drove cross-functional programs influencing design, manufacturing, validation, and vendor teams across 5 global sites, with go/no-go program authority and direct VP-level reporting.
+### Bedrock Construction Co. | Quarryland, CA | Lead Boulder Tech | 2019–Present
+Context: Owned end-to-end rock crushing and aggregate production for Bedrock's flagship infrastructure contracts, managing an 8-person crew and 3 active quarry sites delivering 12,000 tons annually.
 
-Bullets (all 6 locked — reorder per JD relevance):
-1. Identified and delivered a new metal ECO approach that reduced dependency and complexity of base layers, saving $2.4M+ per stepping and cutting cycle time by 8-10 weeks. TSMC subsequently adopted it as a standard N3 and N2 offering alongside existing ECO solutions.
-2. Championed a new debug methodology across multiple product lines, building a data-driven business case to secure executive alignment and drive standardization across global teams. Achieved 80% feature coverage and reduced root cause analysis cycle time by 40%.
-3. Architected debug solutions for next-generation heterogeneous packaging technology, delivering 16% device access improvement and 50% early boot failure recovery across client, HPC, and server product lines.
-4. Owned enterprise-wide CAD platform transformation across 2,500 engineers at 9 global sites, with go/no-go launch authority and executive change management accountability. Drove conversion success from 40% to 97% and delivered 20x performance improvement.
-5. Managed compute and storage capacity planning for 120 engineers across 5 global sites, aligning quarterly forecasts to project demand and driving a 50% reduction in compute consumption.
-6. Governed $2M Synopsys Avalon SOW across procurement, licensing, and performance accountability, maintaining 99% uptime and 95% SLA compliance for 2,500 engineers. Managed weekly vendor cadence with JIRA/Confluence tracking and delivered quarterly KPI reporting to executive leadership.
+Bullets (all locked — reorder per JD relevance):
+1. Delivered 50,000 tons of precision-graded aggregate across 12 infrastructure projects with 100% on-time completion, supporting Bedrock's new Overpass and 3 municipal contracts.
+2. Optimized John Deere CB1220 crushing sequences to reduce cycle time by 35%, increasing daily throughput from 180 to 243 tons per shift.
+3. Developed a rock waste recovery program that reclaimed 40% of previously discarded material, generating $2.8M in annual cost savings across 3 quarry sites.
+4. Led crew certification program for 8 boulder technicians, achieving 100% MSHA compliance and zero lost-time incidents over 18 consecutive months.
 
-### Intel Corporation | Operations Manager – Si Debug Lab | 2011–2014
-Context: Owned and governed $13M debug lab and operations execution for 14nm and 10nm product lines.
+### Slate Rock & Gravel | Quarryland, CA | Junior Boulder Tech | 2014–2019
+Context: Supported boulder extraction and primary crushing operations for Slate Rock's commercial and municipal aggregate supply contracts across 2 active sites.
 
-Bullets (all 4 locked):
-1. Owned lab readiness and execution for 14nm and 10nm nodes, delivering 7 products to on-time launch across global manufacturing sites.
-2. Streamlined workflow and equipment suite through Lean Six Sigma optimization, improving utilization 15% and generating $2M in annual savings.
-3. Established DOE/SPC-based FIB validation framework, eliminating $8M in avoidable CapEx.
-4. Developed a high-performing team through mentorship and 1:1 coaching, achieving a 20% promotion rate.
+Bullets (all locked):
+1. Operated CB1220 and CAT 390F crushing systems across 2 simultaneous quarry sites, maintaining 95% equipment uptime and delivering 8,500 tons per quarter.
+2. Identified a loader pattern inefficiency that reduced turnaround time by 22%, adopted by site management as standard operating procedure across all Slate Rock quarry sites.
+3. Completed advanced John Deere CB1220 operator certification, becoming the youngest technician in company history to reach lead-operator status.
 
-### Intel Corporation | Senior Product Engineer | 2008–2011
+### Pebble Industries | Quarryland, CA | Apprentice Boulder Tech | 2010–2014
 Bullets (both locked):
-1. Recovered and stabilized yield for 22nm client graphics from 10% to 90%, enabling production launch.
-2. Drove data-based analysis proving a planned $100M tester upgrade was unviable, redirecting to an alternate DFT strategy and eliminating unnecessary capital spend.
-
-### Intel Corporation | Software Engineering Manager | 2004–2008
-Bullets (locked):
-1. Directed development of failure analysis ATE debug tools, achieving 100% on-time readiness and 10x performance improvement.
-
-**Software Engineer 1999–2004: intentionally omitted — too old, adds no value**
+1. Progressed to solo CB1220 operation within 18 months of hire, completing primary rock breaking and grading across 2 active quarry sites under senior operator mentorship.
+2. Assisted delivery of 4,200 tons of aggregate for the Cobblestone Highway expansion, completing 3 weeks ahead of schedule.
 
 ---
 
-## Education (locked)
+## Education (example — replace with candidate.md)
 
-- Computer Science & Electrical Engineering  |  Arizona State University
-- Electron Microscopy  |  San Joaquin Delta College
-- Professional Development: Lean Six Sigma, Agile/Scrum, PMP Candidate, Change Management, DOE/SPC Methodologies, Program Management
-
-**"Change Management" must always appear in the Professional Development line**
+- Heavy Equipment Operations  |  Bedrock Technical Institute
+- Professional Development: MSHA Safety Certification, John Deere CB1220 Master Operator, Lean Production, Load & Haul Optimization
 
 ---
 
-## Patents & Publications (condensed — 2 lines, locked)
-
-**Line 1 (bold):**
-Integrated Circuit Alignment Marks — US Patent 5,936,311  ·  AI/ML based DRC Localized Adjuster — Patent Filed
-
-**Line 2:**
-3 Intel Technical Publications on semiconductor process engineering and CAD tooling methodology
-
----
-
-## Leadership, Development & Memberships (combined, locked)
+## Leadership, Development & Memberships (example — replace with candidate.md)
 
 Two lines:
-> Mentored 8 engineers (technical & career development)  ·  Developed training programs for FIB, lab operations, material handling, and NDA/IP Compliance
-> PMI  ·  ASM International  ·  EDFAS
+> Mentored 3 junior boulder technicians (technical & career development)  ·  Developed CB1220 operator certification program adopted company-wide
+> International Union of Operating Engineers (IUOE)  ·  National Stone, Sand & Gravel Association (NSSGA)
 
 ---
 
@@ -405,7 +365,7 @@ Two lines:
 - Skills in main body flow — competency table in document body
 - Standard section labels: PROFESSIONAL EXPERIENCE, EDUCATION, CORE COMPETENCIES
 - No text boxes — all content in paragraph or table flow
-- Dates: YYYY or YYYY – YYYY, no spaces inside year
+- Dates: YYYY or YYYY – YYYY
 - Submit .docx for online portals — never PDF unless required
 
 ---
@@ -417,40 +377,21 @@ Two lines:
 - Never hardcode bullet characters — always LevelFormat.BULLET
 - Never use × — always x
 - Never exceed 2 sentences in summary
-- Never add "Omnichannel"
-- Never use "Proven" for SiClarity — use "Record of architecting" or "Owned"
-- Never bold the narrative half of a bullet — bold prefix only (before em dash)
-- Never change any metric ($122M, $20M, $2.4M, 99%, 20x, 100%, etc.)
-- Always keep $122M in both tagline and summary
+- Never change any locked metric from candidate.md
+- Never bold a full bullet — lead with outcome, no bold prefix format
+- Never use em dashes anywhere — not in bullets, summaries, context lines, or chat
 
 ---
 
 ## How To Adapt For A New Job Description
 
-1. Load this file and `resume_base_v9.js`
+1. Load this file and the current base build script
 2. Update **tagline** — match role title and focus to JD
 3. Update **summary sentence 1** — reframe context to JD industry/domain
-4. Update **Core Competencies** — swap items to match JD keywords 
-5. Update **Technology line** — add/remove tech terms per JD
-6. Reorder **Intel TPM bullets** — most JD-relevant bullets go first
+4. Update **Core Competencies** — swap items to match JD keywords
+5. Update **Technology line** — add/remove tech terms per JD audience
+6. Reorder **experience bullets** — most JD-relevant bullets go first within each role
 7. Reframe **context lines** — adjust italic descriptions to JD language
-8. Never change metrics, dates, company names, or education
-9. Run scorecard after rebuild to verify JD match score
-10. Name output: `Ken_Faulk_[Company]_[Role]_v1.docx`
-
----
-
-## Version History
-
-| Version | Key Change |
-|---|---|
-| v1 | Initial tailored resume for Intel ISS role |
-| v2 | Reordered Intel TPM bullets, SOW language added |
-| v3 | Summary → 8-second 2-sentence version |
-| v4 | Multi-workstream bullet cleaned to Option C |
-| v5 | Dashboard bullet trimmed |
-| v6 | Full rebuild: single-column, Calibri, 3-column competency table, ATS-clean |
-| v7 | 4-column competency table + Data & Analytics column, solid pale blue rows, no column dividers, condensed patents to 2 lines, merged Leadership/Memberships, dropped SW Engineer 1999-2004, tightened spacing to 2 pages |
-| v8 | Header block centered (name/contact/tagline/summary), SiClarity plain language pass (4 bullets, semiconductor jargon removed), competency table updated to broad audience (Lab & Production Readiness, Kaizen/Continuous Improvement), Intel TPM reduced to 6 locked bullets, Ops Manager/Sr Product Eng/SW Eng bullets rewritten (no em dashes), patents reformatted (title first, consistent format), publications condensed to one-liner, Leadership split to two lines with PMI added |
-| v9 (current) | Competency block redesigned from inline dot-separated keyword lines to categorized format. Three named categories (Program Management & Governance, Operations & Continuous Improvement, Leadership & Stakeholder Management) with bold mid-blue headings and one item per line. Dead code removed from build script. "Lean Six Sigma Black Belt (LSS BB)" spelled out in full for ATS exact-match. CLAUDE.md stripped to thin bootstrap. SKILL.md is now sole source of truth for commands and ground rules. |
-
+8. Never change locked metrics, dates, company names, or education
+9. Run /scan after rebuild to verify JD match score
+10. Name output: `[CandidateName]_[Company]_[Role]_v1.docx`
